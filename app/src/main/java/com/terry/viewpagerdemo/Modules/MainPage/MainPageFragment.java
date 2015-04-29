@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class MainPageFragment extends BaseFragment {
 
+    private List<MainPageItem> mainPageItemList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,7 +28,7 @@ public class MainPageFragment extends BaseFragment {
         View v = inflater.inflate(R.layout.fragment_main_page, container, false);
 
         ListView listView = (ListView) v.findViewById(R.id.listView);
-        final List<MainPageItem> mainPageItemList = GenerateDummyData();
+         mainPageItemList = GenerateDummyData();
 
         MainPageAdapter mainPageAdapter = new MainPageAdapter(this.getActivity().getBaseContext(), R.layout.layout_mainpage_item, mainPageItemList);
         listView.setAdapter(mainPageAdapter);
@@ -57,10 +59,20 @@ public class MainPageFragment extends BaseFragment {
             }
         });
 
-
         return v;
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        if(mainPageItemList.get(menuInfo.position) instanceof MainPageItem)
+        {
+            Toast.makeText(getActivity().getBaseContext(), mainPageItemList.get(menuInfo.position).getName() +"````" + item.getTitle() , Toast.LENGTH_SHORT).show();
+        }
+
+        System.out.println(item.getTitle());
+        return super.onContextItemSelected(item);
+    }
 
     private List<MainPageItem> GenerateDummyData() {
         ArrayList<MainPageItem> mainPageItemList = new ArrayList<MainPageItem>();
