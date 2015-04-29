@@ -4,12 +4,7 @@ public class MainPageItem {
     private int Icon;
     private String Name;
     private String Description;
-
-    public MainPageItem(int icon, String name, String description) {
-        Icon = icon;
-        Name = name;
-        Description = description;
-    }
+    private String Tip;
 
     public int getIcon() {
         return Icon;
@@ -33,5 +28,13 @@ public class MainPageItem {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public String getTip() {
+        return Tip;
+    }
+
+    public void setTip(String tip) {
+        Tip = tip;
     }
 }
