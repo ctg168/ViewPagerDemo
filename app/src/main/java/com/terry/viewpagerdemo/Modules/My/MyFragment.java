@@ -1,4 +1,4 @@
-package com.terry.viewpagerdemo.Modules;
+package com.terry.viewpagerdemo.Modules.My;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

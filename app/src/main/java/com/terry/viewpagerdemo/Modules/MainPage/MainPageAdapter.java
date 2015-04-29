@@ -1,4 +1,4 @@
-package com.terry.viewpagerdemo.Modules;
+package com.terry.viewpagerdemo.Modules.MainPage;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
