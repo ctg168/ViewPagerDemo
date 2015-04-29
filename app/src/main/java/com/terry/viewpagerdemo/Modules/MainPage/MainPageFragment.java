@@ -1,6 +1,8 @@
 package com.terry.viewpagerdemo.Modules.MainPage;
 
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +37,30 @@ public class MainPageFragment extends BaseFragment {
                 Toast.makeText(getActivity().getBaseContext(), mainPageItemList.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                return false;
+            }
+        });
+
+        listView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                menu.setHeaderTitle("选中项的名字");
+                menu.add("标为未读");
+                menu.add("取消关注");
+                menu.add("删除该聊天");
+            }
+        });
+
+
         return v;
     }
+
 
     private List<MainPageItem> GenerateDummyData() {
         ArrayList<MainPageItem> mainPageItemList = new ArrayList<MainPageItem>();
@@ -50,4 +74,6 @@ public class MainPageFragment extends BaseFragment {
         }
         return mainPageItemList;
     }
+
+
 }
