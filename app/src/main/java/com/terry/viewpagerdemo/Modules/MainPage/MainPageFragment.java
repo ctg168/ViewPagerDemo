@@ -55,9 +55,9 @@ public class MainPageFragment extends BaseFragment {
                 if (menuInfo instanceof AdapterView.AdapterContextMenuInfo) {
                     AdapterView.AdapterContextMenuInfo OmenuInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
                     MainPageItem mainPageItem = mainPageItemList.get(OmenuInfo.position);
-                    System.err.println(mainPageItem.getName());
+                    //System.err.println(mainPageItem.getName());
 
-                    menu.setHeaderTitle("选中项的名字");
+                    menu.setHeaderTitle(mainPageItem.getName());
 
                     //已读未读
                     if (mainPageItem.isOld()) {
@@ -67,7 +67,7 @@ public class MainPageFragment extends BaseFragment {
                     }
 
                     //"微信公众平台"不允许取消关注
-                    if (mainPageItem.getName() != Title4) {
+                    if (!mainPageItem.getName().equals(Title4)) {
                         menu.add(R.string.MainPageItemContextMenu_UnFocus);
                     }
                     menu.add(R.string.MainPageItemContextMenu_Remove);
