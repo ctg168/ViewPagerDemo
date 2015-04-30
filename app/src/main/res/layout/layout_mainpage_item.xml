@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:layout_marginTop="0.5dp"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:minHeight="60dp"
     android:gravity="center_vertical"
-    android:baselineAligned="false">
+    >
 
     <ImageView
         android:id="@+id/img"
-        android:layout_marginLeft="10dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_marginLeft="6dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:src="@drawable/btn_home_focus" />
 
     <RelativeLayout
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="8dp"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content">
@@ -48,9 +48,18 @@
             android:text="下午15:52"
             android:textSize="16sp"
             android:textColor="#999"
-            android:gravity="top"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/slient"
+            android:src="@drawable/imagepager_dot"
+            android:layout_marginTop="5dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_below="@id/tip"
+            android:layout_alignRight="@id/tip"
+            />
 
     </RelativeLayout>
 </LinearLayout>

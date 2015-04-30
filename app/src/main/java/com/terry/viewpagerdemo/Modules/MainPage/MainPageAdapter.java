@@ -39,6 +39,8 @@ public class MainPageAdapter extends ArrayAdapter<MainPageItem> {
             viewHolder.title = (TextView) view.findViewById(R.id.title);
             viewHolder.desc = (TextView) view.findViewById(R.id.desc);
             viewHolder.tip = (TextView) view.findViewById(R.id.tip);
+            viewHolder.silent = (ImageView) view.findViewById(R.id.slient);
+
             view.setTag(viewHolder);
         } else {
             view = convertView;
@@ -48,6 +50,9 @@ public class MainPageAdapter extends ArrayAdapter<MainPageItem> {
         viewHolder.title.setText(item.getName());
         viewHolder.desc.setText(item.getDescription());
         viewHolder.tip.setText(item.getTip());
+
+        viewHolder.silent.setImageResource( item.isSlientState()? R.drawable.imagepager_dot:R.drawable.imagepager_dot_focus );
+
         return view;
     }
 
@@ -56,5 +61,6 @@ public class MainPageAdapter extends ArrayAdapter<MainPageItem> {
         public TextView title;
         public TextView desc;
         public TextView tip;
+        public ImageView silent;
     }
 }

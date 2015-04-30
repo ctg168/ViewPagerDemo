@@ -6,6 +6,7 @@ public class MainPageItem {
     private String Description;
     private String Tip;
     private boolean isOld;
+    private boolean SlientState;
 
     public int getIcon() {
         return Icon;
@@ -50,5 +51,13 @@ public class MainPageItem {
     @Override
     public String toString() {
         return String.format("title:%s: isold %s ", getName(), isOld);
+    }
+
+    public boolean isSlientState() {
+        return SlientState;
+    }
+
+    public void setSlientState(boolean slientState) {
+        SlientState = slientState;
     }
 }

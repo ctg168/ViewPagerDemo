@@ -71,6 +71,7 @@ public class MainPageFragment extends BaseFragment {
                         menu.add(R.string.MainPageItemContextMenu_UnFocus);
                     }
                     menu.add(R.string.MainPageItemContextMenu_Remove);
+                    menu.add(R.string.MainPageItemContextMenu_Slient);
                 }
             }
         });
@@ -95,10 +96,13 @@ public class MainPageFragment extends BaseFragment {
             } else if (itemTitle == getString(R.string.MainPageItemContextMenu_Remove)) {
                 mainPageItemList.remove(menuInfo.position);
 
-            } else {
+            } else if (itemTitle == getString(R.string.MainPageItemContextMenu_Slient)) {
+                mainPageItem.setSlientState(mainPageItem.isSlientState()); //免打扰开关
             }
+            else{}
 
-            if (this.mainPageAdapter != null){
+            //刷新数据列表
+            if (this.mainPageAdapter != null) {
                 mainPageAdapter.notifyDataSetChanged();
             }
         }
@@ -107,13 +111,12 @@ public class MainPageFragment extends BaseFragment {
 
     private List<MainPageItem> GenerateDummyData() {
         ArrayList<MainPageItem> mainPageItemList = new ArrayList<MainPageItem>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 30; i++) {
             MainPageItem item = new MainPageItem();
 
             String title;
             String desc;
             int img;
-
 
             if (i % 5 == 0) {
                 title = Title1;
@@ -131,10 +134,12 @@ public class MainPageFragment extends BaseFragment {
                 title = Title4;
                 desc = "自定义菜单接口和素材管理接口向第三方平台旗下为认证订阅号开放";
                 img = R.drawable.ic_mainpageitem_rt_jieyan;
+                item.setSlientState(true);
             } else if (i % 37 == 0) {
                 title = Title5;
                 desc = "武汉吃货：炉鱼武汉第二店落户宜家荟聚，开业有你想象不到的折扣";
                 img = R.drawable.ic_mainpageitem_rt_gossip;
+
             } else {
                 title = Title6;
                 desc = "你几么有空？";

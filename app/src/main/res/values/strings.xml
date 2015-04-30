@@ -11,6 +11,7 @@
     <string name="MainPageItemContextMenu_MarkAsNew">标为未读</string>
     <string name="MainPageItemContextMenu_UnFocus">取消关注</string>
     <string name="MainPageItemContextMenu_Remove">删除该聊天</string>
+    <string name="MainPageItemContextMenu_Slient">免打扰</string>
 
 </resources>
 
