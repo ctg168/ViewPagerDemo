@@ -5,6 +5,7 @@ public class MainPageItem {
     private String Name;
     private String Description;
     private String Tip;
+    private boolean isOld;
 
     public int getIcon() {
         return Icon;
@@ -36,5 +37,18 @@ public class MainPageItem {
 
     public void setTip(String tip) {
         Tip = tip;
+    }
+
+    public boolean isOld() {
+        return isOld;
+    }
+
+    public void setOld(boolean isOld) {
+        this.isOld = isOld;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("title:%s: isold %s ", getName(), isOld);
     }
 }
