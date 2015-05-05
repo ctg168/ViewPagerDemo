@@ -19,6 +19,10 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //yes.
+        //ok.
+
+
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         ArrayList<BaseFragment> fragmentList = new ArrayList<BaseFragment>();
@@ -34,6 +38,8 @@ public class MainActivity extends FragmentActivity {
 
 //more code in here.
 //这里有一个改动
+
+
 
     @Override
     protected void onRestart() {
