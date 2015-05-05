@@ -31,6 +31,8 @@ public class MainActivity extends FragmentActivity {
         viewPager.setAdapter(mainPageAdapter);
     }
 
+//more code in here.
+//这里有一个改动
 
     @Override
     protected void onRestart() {
