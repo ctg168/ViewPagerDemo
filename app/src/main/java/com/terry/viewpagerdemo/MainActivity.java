@@ -32,7 +32,7 @@ public class MainActivity extends FragmentActivity {
         fragmentList.add(new MyFragment());
         MainFragmentAdapter mainPageAdapter = new MainFragmentAdapter(getSupportFragmentManager(), fragmentList);
 
-//sure, it's a bug.
+//sure, it's a bug. change on server.
         viewPager.setAdapter(mainPageAdapter);
     }
 
