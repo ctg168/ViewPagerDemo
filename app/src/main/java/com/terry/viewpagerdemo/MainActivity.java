@@ -11,6 +11,7 @@ import com.terry.viewpagerdemo.Modules.My.MyFragment;
 
 import java.util.ArrayList;
 
+//terry edit on server web page. 20150505
 public class MainActivity extends FragmentActivity {
 
     @Override
