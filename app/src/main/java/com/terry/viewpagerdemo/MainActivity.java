@@ -29,4 +29,10 @@ public class MainActivity extends FragmentActivity {
 
         viewPager.setAdapter(mainPageAdapter);
     }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 }
