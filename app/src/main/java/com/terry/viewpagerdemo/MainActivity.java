@@ -28,5 +28,7 @@ public class MainActivity extends FragmentActivity {
         MainFragmentAdapter mainPageAdapter = new MainFragmentAdapter(getSupportFragmentManager(), fragmentList);
 
         viewPager.setAdapter(mainPageAdapter);
+
+        // to branch test.
     }
 }
