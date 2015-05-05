@@ -11,17 +11,12 @@ import com.terry.viewpagerdemo.Modules.My.MyFragment;
 
 import java.util.ArrayList;
 
-//terry edit on server web page. 20150505
 public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //yes.
-        //ok.
-
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
 
@@ -32,15 +27,8 @@ public class MainActivity extends FragmentActivity {
         fragmentList.add(new MyFragment());
         MainFragmentAdapter mainPageAdapter = new MainFragmentAdapter(getSupportFragmentManager(), fragmentList);
 
-        //change on client. and server.
-
         viewPager.setAdapter(mainPageAdapter);
     }
-
-//more code in here.
-//这里有一个改动
-
-
 
     @Override
     protected void onRestart() {
