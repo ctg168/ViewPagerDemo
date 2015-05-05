@@ -5,4 +5,18 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <style name="splitline_horizontal">
+        <item name="android:background">@color/LightGrey</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.70000005dip</item>
+    </style>
+    <style name="splitline_vertical">
+        <item name="android:background">@color/LightGrey</item>
+        <item name="android:layout_width">0.70000005dip</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
+
+
 </resources>

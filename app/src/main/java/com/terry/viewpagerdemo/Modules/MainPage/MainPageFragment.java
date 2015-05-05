@@ -67,7 +67,7 @@ public class MainPageFragment extends BaseFragment {
                     }
 
                     //"微信公众平台"不允许取消关注
-                    if (!mainPageItem.getName().equals(Title4)) {
+                    if (!mainPageItem.getName().startsWith(Title4)) {
                         menu.add(R.string.MainPageItemContextMenu_UnFocus);
                     }
                     menu.add(R.string.MainPageItemContextMenu_Remove);
@@ -87,10 +87,10 @@ public class MainPageFragment extends BaseFragment {
         if (mainPageItem != null) {
             //Toast.makeText(getActivity().getBaseContext(), mainPageItemList.get(menuInfo.position).getName() + "````" + item.getTitle(), Toast.LENGTH_SHORT).show();
             CharSequence itemTitle = item.getTitle();
-            if (itemTitle == getString(R.string.MainPageItemContextMenu_MarkAsOld)) {
-                mainPageItem.setOld(true);
-            } else if (itemTitle == getString(R.string.MainPageItemContextMenu_MarkAsNew)) {
-                mainPageItem.setOld(false);
+            if (itemTitle == getString(R.string.MainPageItemContextMenu_MarkAsOld) ||
+                    (itemTitle == getString(R.string.MainPageItemContextMenu_MarkAsNew))) {
+                mainPageItem.setOld(!mainPageItem.isOld());
+
             } else if (itemTitle == getString(R.string.MainPageItemContextMenu_UnFocus)) {
 
             } else if (itemTitle == getString(R.string.MainPageItemContextMenu_Remove)) {
@@ -98,8 +98,8 @@ public class MainPageFragment extends BaseFragment {
 
             } else if (itemTitle == getString(R.string.MainPageItemContextMenu_Slient)) {
                 mainPageItem.setSlientState(mainPageItem.isSlientState()); //免打扰开关
+            } else {
             }
-            else{}
 
             //刷新数据列表
             if (this.mainPageAdapter != null) {

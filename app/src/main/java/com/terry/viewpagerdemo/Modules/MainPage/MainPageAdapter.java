@@ -29,6 +29,9 @@ public class MainPageAdapter extends ArrayAdapter<MainPageItem> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // 这是经过优化的视图加载方法，可以减少View的数量。
+        // http://blog.csdn.net/zuolongsnail/article/details/7197979
+
         MainPageItem item = getItem(position);
         View view;
         ViewHolder viewHolder = null;
@@ -51,7 +54,11 @@ public class MainPageAdapter extends ArrayAdapter<MainPageItem> {
         viewHolder.desc.setText(item.getDescription());
         viewHolder.tip.setText(item.getTip());
 
-        viewHolder.silent.setImageResource( item.isSlientState()? R.drawable.imagepager_dot:R.drawable.imagepager_dot_focus );
+        int resId = R.drawable.imagepager_dot;
+        if (item.isOld()) {
+            resId = R.drawable.imagepager_dot_focus;
+        }
+        viewHolder.silent.setImageResource(resId);
 
         return view;
     }
