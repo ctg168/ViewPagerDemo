@@ -64,7 +64,10 @@ public class OfflineFragment extends BaseFragment {
                         System.out.println("OfflineFragment.onClick");
 
                         if (v.getTag() instanceof OfflineItem) {
-                            Toast.makeText(getActivity().getBaseContext(), ((OfflineItem) v.getTag()).getStoreFileName(), Toast.LENGTH_SHORT).show();
+                            OfflineItem item = (OfflineItem) v.getTag();
+                            DownloadFileItem(item.getUrl());
+
+                            //Toast.makeText(getActivity().getBaseContext(), ((OfflineItem) v.getTag()).getStoreFileName(), Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -148,8 +151,7 @@ public class OfflineFragment extends BaseFragment {
 
     }
 
-
-    private void DownloadFileItem(int fileId) {
+    private void DownloadFileItem(String url) {
 
     }
 
