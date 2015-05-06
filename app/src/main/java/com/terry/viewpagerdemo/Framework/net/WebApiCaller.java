@@ -1,4 +1,4 @@
-package com.terry.viewpagerdemo.net;
+package com.terry.viewpagerdemo.Framework.net;
 
 import android.content.Context;
 import android.util.Log;
