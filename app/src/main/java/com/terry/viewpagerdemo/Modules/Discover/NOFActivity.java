@@ -1,6 +1,7 @@
 package com.terry.viewpagerdemo.Modules.Discover;
 
 import android.app.ActionBar;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -38,7 +39,8 @@ public class NOFActivity extends FragmentActivity {
                         .setText(R.id.tvNOFName, item.getName())
                         .setText(R.id.tvNOFDesc, item.getContent())
                         .setImageResource(R.id.imgNOFCenterImage, item.getCenterImg())
-                        .setText(R.id.tvNOFtime, item.getTime());
+                        .setText(R.id.tvNOFtime, item.getTime())
+                        .setTextColor(R.id.tvNOFtime, Color.RED);
             }
         };
 
