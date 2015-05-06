@@ -93,7 +93,7 @@ public class WebApiCaller<T> {
                         JsonElement ele = gson.toJsonTree(param);
                         obj.add(key, ele);
                     } else {
-                        throw new Exception("无法识别的参数类型!");
+                        throw new Exception("无法识别的参数类型呀!");
                     }
                 }
 
