@@ -8,6 +8,7 @@ import com.terry.viewpagerdemo.Modules.ContactBook.ContactBookFragment;
 import com.terry.viewpagerdemo.Modules.Discover.DiscoverFragment;
 import com.terry.viewpagerdemo.Modules.MainPage.MainPageFragment;
 import com.terry.viewpagerdemo.Modules.My.MyFragment;
+import com.terry.viewpagerdemo.Modules.Offline.OfflineFragment;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ public class MainActivity extends FragmentActivity {
         fragmentList.add(new ContactBookFragment());
         fragmentList.add(new DiscoverFragment());
         fragmentList.add(new MyFragment());
+        fragmentList.add(OfflineFragment.newInstance());
         MainFragmentAdapter mainPageAdapter = new MainFragmentAdapter(getSupportFragmentManager(), fragmentList);
 
         viewPager.setAdapter(mainPageAdapter);

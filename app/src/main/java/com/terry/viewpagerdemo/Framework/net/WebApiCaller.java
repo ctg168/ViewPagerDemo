@@ -59,12 +59,10 @@ public class WebApiCaller<T> {
             @Override
             protected Response<String> parseNetworkResponse(
                     NetworkResponse response) {
-                // TODO Auto-generated method stub
                 String str = null;
                 try {
                     str = new String(response.data, "utf-8");
                 } catch (UnsupportedEncodingException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 return Response.success(str,
@@ -106,7 +104,6 @@ public class WebApiCaller<T> {
                 try {
                     obj = this.GetPostObject(params);
                 } catch (Exception e) {
-                    // TODO �Զ���ɵ� catch ��
                     e.printStackTrace();
                 }
 
@@ -161,12 +158,10 @@ public class WebApiCaller<T> {
             @Override
             protected Response<String> parseNetworkResponse(
                     NetworkResponse response) {
-                // TODO Auto-generated method stub
                 String str = null;
                 try {
                     str = new String(response.data, "utf-8");
                 } catch (UnsupportedEncodingException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 return Response.success(str,
@@ -208,7 +203,6 @@ public class WebApiCaller<T> {
                 try {
                     obj = this.GetPostObject(params);
                 } catch (Exception e) {
-                    // TODO �Զ���ɵ� catch ��
                     e.printStackTrace();
                 }
 
