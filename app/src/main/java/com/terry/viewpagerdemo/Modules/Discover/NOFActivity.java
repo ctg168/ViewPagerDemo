@@ -1,17 +1,19 @@
 package com.terry.viewpagerdemo.Modules.Discover;
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.terry.viewpagerdemo.Framework.QuickAdapter.BaseAdapterHelper;
+import com.terry.viewpagerdemo.Framework.QuickAdapter.QuickAdapter;
 import com.terry.viewpagerdemo.R;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 //NOF(Network of Friends) Activity
 public class NOFActivity extends FragmentActivity {
@@ -24,9 +26,42 @@ public class NOFActivity extends FragmentActivity {
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setTitle("朋友圈");
-            actionBar.setDisplayShowHomeEnabled(true);
+            //actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        ListView lvNofList = (ListView) this.findViewById(R.id.lvNofList);
+        QuickAdapter<NOFItem> adapter = new QuickAdapter<NOFItem>(this, R.layout.layout_nof_item) {
+            @Override
+            protected void convert(BaseAdapterHelper helper, NOFItem item) {
+                helper.setImageResource(R.id.imgNOFAvatar, item.getAvaterImg())
+                        .setText(R.id.tvNOFName, item.getName())
+                        .setText(R.id.tvNOFDesc, item.getContent())
+                        .setImageResource(R.id.imgNOFCenterImage, item.getCenterImg())
+                        .setText(R.id.tvNOFtime, item.getTime());
+            }
+        };
+
+        lvNofList.setAdapter(adapter);
+
+        adapter.addAll(getDummyData());
     }
+
+    private List<NOFItem> getDummyData() {
+        List<NOFItem> objList = new ArrayList<NOFItem>();
+
+        for (int i = 0; i < 30; i++) {
+            NOFItem nofItem = new NOFItem();
+            nofItem.setAvaterImg(R.drawable.ic_mainpageitem_activity);
+            nofItem.setName("喜洋洋" + i);
+            nofItem.setContent("终于开花了" + i);
+            nofItem.setTime("12:33");
+            nofItem.setCenterImg(R.drawable.mmexport1430886412106);
+            objList.add(nofItem);
+        }
+        return objList;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

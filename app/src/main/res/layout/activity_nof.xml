@@ -1,33 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.terry.viewpagerdemo.Modules.Discover.NOFActivity">
 
-    <ScrollView
+
+    <!--标头部分-->
+    <RelativeLayout
+        android:id="@+id/bkgarea"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp"
+        android:background="#ff11cc62">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    </RelativeLayout>
 
-            <!--标头部分-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#ff11cc62">
+    <!--消息列表-->
+    <ListView
+        android:id="@+id/lvNofList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
 
-            </RelativeLayout>
-
-            <!--消息列表-->
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </ListView>
-
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
