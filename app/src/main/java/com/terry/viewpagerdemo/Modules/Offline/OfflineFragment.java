@@ -1,7 +1,6 @@
 package com.terry.viewpagerdemo.Modules.Offline;
 
 import android.os.Bundle;
-import android.text.method.CharacterPickerDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.terry.viewpagerdemo.BaseActivity;
 import com.terry.viewpagerdemo.BaseFragment;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.BaseAdapterHelper;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.QuickAdapter;
@@ -20,6 +18,9 @@ import java.util.List;
 
 
 public class OfflineFragment extends BaseFragment {
+
+    //同时下载的最大数量
+    private int maxItem = 5;
 
     ListView listView;
 
@@ -38,20 +39,34 @@ public class OfflineFragment extends BaseFragment {
 
 
         QuickAdapter<OfflineItem> adapter = new QuickAdapter<OfflineItem>(this.getActivity().getBaseContext(), R.layout.layout_download_item) {
+
+            Button btnDownload;
+
             @Override
             protected void convert(BaseAdapterHelper helper, OfflineItem item) {
+
                 helper.setText(R.id.url, item.getUrl())  // + "[" + item.getDownloadState().toString() + "]")
                         .setProgress(R.id.progressBar, item.getDownloadRate())
                         .setText(R.id.button, "开始");
 
-                Button btn = helper.getView(R.id.button);
-                btn.setOnClickListener(new View.OnClickListener() {
+//                if (btnDownload == null) {
+//
+//                }
 
+                btnDownload = helper.getView(R.id.button);
+                btnDownload.setTag(item);
+
+                btnDownload.setOnClickListener(new View.OnClickListener() {
                     int position;
 
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getActivity().getBaseContext(), "aaa", Toast.LENGTH_SHORT).show();
+                        System.out.println("OfflineFragment.onClick");
+
+                        if (v.getTag() instanceof OfflineItem) {
+                            Toast.makeText(getActivity().getBaseContext(), ((OfflineItem) v.getTag()).getStoreFileName(), Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
             }
@@ -113,6 +128,7 @@ public class OfflineFragment extends BaseFragment {
             OfflineItem offlineItem = new OfflineItem();
             offlineItem.setUrl(pre + files[i]);
             offlineItem.setDownloadRate(10);
+            offlineItem.setStoreFileName(files[i]);
             //offlineItem.setDownloadState(OfflineItem.DownloadState.READY);
             objList.add(offlineItem);
         }
@@ -120,5 +136,21 @@ public class OfflineFragment extends BaseFragment {
         return objList;
     }
 
+    public static String getFileName(String pathandname) {
+
+        int start = pathandname.lastIndexOf("/");
+        int end = pathandname.lastIndexOf(".");
+        if (start != -1 && end != -1) {
+            return pathandname.substring(start + 1, end);
+        } else {
+            return null;
+        }
+
+    }
+
+
+    private void DownloadFileItem(int fileId) {
+
+    }
 
 }
