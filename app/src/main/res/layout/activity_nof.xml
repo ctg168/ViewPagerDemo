@@ -11,8 +11,24 @@
         android:id="@+id/bkgarea"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#ff11cc62">
+        >
+        
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/nofbkg"
+            android:scaleType="centerCrop" />
 
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/btn_home_focus"
+            android:layout_marginRight="10dp" />
     </RelativeLayout>
 
     <!--消息列表-->

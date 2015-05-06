@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <View style="@style/splitline_horizontal"/>
+
 
         <!-- 名字 -->
         <TextView
@@ -59,5 +59,6 @@
 
     </LinearLayout>
 
+    <View style="@style/splitline_horizontal"/>
 
 </LinearLayout>
