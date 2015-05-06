@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import android.widget.Toast;
 
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
 
     /**
      * LOG打印标签
@@ -27,18 +28,20 @@ public abstract class BaseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         int layoutId = getLayoutId();
         if (layoutId != 0) {
             setContentView(layoutId);
             // 删除窗口背景
-            getWindow().setBackgroundDrawable(null);
+            //getWindow().setBackgroundDrawable(null);
         }
 
         mContext = this.getApplicationContext();
-        ((BaseApplication) this.getApplication()).addActivity(this);
-
+        if(this.getApplication() instanceof  BaseApplication)
+        {
+            ((BaseApplication) this.getApplication()).addActivity(this);
+        }
         // 向用户展示信息前的准备工作在这个方法里处理
         preliminary();
     }

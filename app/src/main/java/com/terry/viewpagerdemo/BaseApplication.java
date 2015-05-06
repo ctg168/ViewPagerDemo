@@ -5,7 +5,6 @@ import android.app.Application;
 
 import java.util.ArrayList;
 
-
 public class BaseApplication extends Application {
 
     private static ArrayList<BaseActivity> activitys = new ArrayList<BaseActivity>();
@@ -13,6 +12,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //this.setTheme(R.style.AppTheme);
     }
 
 

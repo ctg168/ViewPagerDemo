@@ -1,11 +1,15 @@
 package com.terry.viewpagerdemo.Modules.Offline;
 
 import android.os.Bundle;
+import android.text.method.CharacterPickerDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.terry.viewpagerdemo.BaseActivity;
 import com.terry.viewpagerdemo.BaseFragment;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.BaseAdapterHelper;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.QuickAdapter;
@@ -38,7 +42,18 @@ public class OfflineFragment extends BaseFragment {
             protected void convert(BaseAdapterHelper helper, OfflineItem item) {
                 helper.setText(R.id.url, item.getUrl())  // + "[" + item.getDownloadState().toString() + "]")
                         .setProgress(R.id.progressBar, item.getDownloadRate())
-                        .setText(R.id.button, "暂停");
+                        .setText(R.id.button, "开始");
+
+                Button btn = helper.getView(R.id.button);
+                btn.setOnClickListener(new View.OnClickListener() {
+
+                    int position;
+
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getActivity().getBaseContext(), "aaa", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         };
 

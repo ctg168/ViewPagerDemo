@@ -3,6 +3,7 @@ package com.terry.viewpagerdemo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import com.terry.viewpagerdemo.Modules.ContactBook.ContactBookFragment;
 import com.terry.viewpagerdemo.Modules.Discover.DiscoverFragment;
@@ -12,7 +13,7 @@ import com.terry.viewpagerdemo.Modules.Offline.OfflineFragment;
 
 import java.util.ArrayList;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,20 @@ public class MainActivity extends FragmentActivity {
         MainFragmentAdapter mainPageAdapter = new MainFragmentAdapter(getSupportFragmentManager(), fragmentList);
 
         viewPager.setAdapter(mainPageAdapter);
+    }
 
-        // to branch test.
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void setupViews() {
+
+    }
+
+    @Override
+    protected void initialized() {
+
     }
 }
