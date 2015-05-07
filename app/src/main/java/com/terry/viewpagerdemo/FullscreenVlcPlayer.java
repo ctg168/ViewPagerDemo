@@ -57,6 +57,7 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
     private final static int VideoSizeChanged = -1;
 
 
+    private int mStartTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,7 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
         // Retrieve our url
         Bundle b = getIntent().getExtras();
         urlToStream = b.getString("url", null);
+        mStartTime = b.getInt("startTime",0);
 
         // HIDE THE ACTION BAR
         getActionBar().hide();
@@ -180,7 +182,7 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
         vlcContainer.setVisibility(View.VISIBLE);
         holder = mSurface.getHolder();
         holder.addCallback(this);
-        createPlayer(urlToStream);
+        createPlayer(urlToStream,mStartTime);
     }
 
     private void toggleFullscreen(boolean fullscreen) {
@@ -291,7 +293,7 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
      * ***********
      */
 
-    private void createPlayer(String media) {
+    private void createPlayer(String media,int startTime) {
         releasePlayer();
         setupControls();
         try {
@@ -310,6 +312,9 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
             libvlc.setTimeStretching(true);
             libvlc.setChroma("RV32");
             libvlc.setVerboseMode(true);
+
+            //libvlc.setPosition(startTime);
+
             LibVLC.restart(this);
             EventHandler.getInstance().addHandler(mHandler);
             holder.setFormat(PixelFormat.RGBX_8888);

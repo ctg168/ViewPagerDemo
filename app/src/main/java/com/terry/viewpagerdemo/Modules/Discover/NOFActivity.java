@@ -87,6 +87,7 @@ public class NOFActivity extends FragmentActivity {
 
             // Pass the url from the input to the player
             b.putString("url", url2);
+            b.putInt("startTime", 4000);
             toFullscreen.putExtras(b); //Put your id to your next Intent
             startActivity(toFullscreen);
         }
