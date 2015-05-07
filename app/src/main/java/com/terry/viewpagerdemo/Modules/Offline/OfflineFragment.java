@@ -101,6 +101,7 @@ public class OfflineFragment extends BaseFragment {
 //                "AppLog.log.2015-04-27",
                 "001.docx",
                 "cde.flv",
+                "def.mp3",
                 "软件项目管理办法 第9部分 项目考核办法.txt",
 //                "伊利集团学分制培训方案2012.doc",
 //                "佳腾积分制培训系统用户手册.docx",
@@ -163,7 +164,8 @@ public class OfflineFragment extends BaseFragment {
                         Toast.makeText(getActivity().getApplication(), "download complete", Toast.LENGTH_SHORT).show();
 
                         //如果下载的flv文件，直接播放
-                        if (storeFileName.endsWith(".flv")) {
+                        if (storeFileName.endsWith(".flv") || storeFileName.endsWith(".mp3"))
+                        {
                             Intent toFullscreen = new Intent(getActivity(), FullscreenVlcPlayer.class);
                             Bundle b = new Bundle();
 
