@@ -1,6 +1,7 @@
 package com.terry.viewpagerdemo.Modules.Discover;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.terry.viewpagerdemo.Framework.QuickAdapter.BaseAdapterHelper;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.QuickAdapter;
+import com.terry.viewpagerdemo.FullscreenVlcPlayer;
 import com.terry.viewpagerdemo.R;
 
 import java.util.ArrayList;
@@ -75,7 +77,18 @@ public class NOFActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getTitle().equals("照相")) {
-            Toast.makeText(getBaseContext(), "照相机坏了", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getBaseContext(), "照相机坏了", Toast.LENGTH_SHORT).show();
+
+            Intent toFullscreen = new Intent(NOFActivity.this, FullscreenVlcPlayer.class);
+            Bundle b = new Bundle();
+
+            String url1 = "http://192.168.1.27:9600/logs/" + "bcd.flv"; //远程视频
+            String url2 = this.getBaseContext().getExternalCacheDir().toString() + "/" + "cde.flv"; //本地视频
+
+            // Pass the url from the input to the player
+            b.putString("url", url2);
+            toFullscreen.putExtras(b); //Put your id to your next Intent
+            startActivity(toFullscreen);
         }
         return super.onOptionsItemSelected(item);
     }

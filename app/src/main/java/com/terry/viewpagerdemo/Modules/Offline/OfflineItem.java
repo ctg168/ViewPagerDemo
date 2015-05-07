@@ -1,6 +1,16 @@
 package com.terry.viewpagerdemo.Modules.Offline;
 
 public class OfflineItem {
+    int Id;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
     String Url;
     String StoreFileName;
     int DownloadRate;

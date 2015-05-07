@@ -1,5 +1,6 @@
 package com.terry.viewpagerdemo.Modules.Offline;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.terry.viewpagerdemo.BaseActivity;
 import com.terry.viewpagerdemo.BaseFragment;
 import com.terry.viewpagerdemo.Framework.ThinDownloadManager.DefaultRetryPolicy;
 import com.terry.viewpagerdemo.Framework.ThinDownloadManager.DownloadManager;
@@ -19,14 +21,22 @@ import com.terry.viewpagerdemo.Framework.ThinDownloadManager.DownloadStatusListe
 import com.terry.viewpagerdemo.Framework.QuickAdapter.BaseAdapterHelper;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.QuickAdapter;
 import com.terry.viewpagerdemo.Framework.ThinDownloadManager.ThinDownloadManager;
+import com.terry.viewpagerdemo.FullscreenVlcPlayer;
 import com.terry.viewpagerdemo.R;
 
+import org.videolan.libvlc.Media;
+
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 public class OfflineFragment extends BaseFragment {
+
+    List<OfflineItem> OfflineList;
 
     //同时下载的最大数量
     private int maxItem = 5;
@@ -50,65 +60,48 @@ public class OfflineFragment extends BaseFragment {
         listView = (ListView) v.findViewById(R.id.lvDownloadList);
 
         downloadManager = new ThinDownloadManager(DOWNLOAD_THREAD_POOL_SIZE);
-
+        OfflineList = new ArrayList<OfflineItem>();
+        FillList();
 
         QuickAdapter<OfflineItem> adapter = new QuickAdapter<OfflineItem>(this.getActivity().getBaseContext(), R.layout.layout_download_item) {
-
-            Button btnDownload;
-            ProgressBar progressBar;
-
             @Override
-            protected void convert(BaseAdapterHelper helper, OfflineItem item) {
-
+            protected void convert(BaseAdapterHelper helper, final OfflineItem item) {
                 helper.setText(R.id.url, item.getUrl())  // + "[" + item.getDownloadState().toString() + "]")
                         .setProgress(R.id.progressBar, item.getDownloadRate())
                         .setText(R.id.button, "开始");
 
-
-                btnDownload = helper.getView(R.id.button);
-                progressBar = helper.getView(R.id.progressBar);
-
-                btnDownload.setTag(item);
+                Button btnDownload = helper.getView(R.id.button);
+                final ProgressBar progressBar = helper.getView(R.id.progressBar);
 
                 btnDownload.setOnClickListener(new View.OnClickListener() {
-                    int position;
-
                     @Override
                     public void onClick(View v) {
-                        System.out.println("OfflineFragment.onClick");
-
-                        if (v.getTag() instanceof OfflineItem) {
-
-                            OfflineItem item = (OfflineItem) v.getTag();
-
-                            DownloadFileItem(item, progressBar);
-
-                            //Toast.makeText(getActivity().getBaseContext(), ((OfflineItem) v.getTag()).getStoreFileName(), Toast.LENGTH_SHORT).show();
-                        }
-
+                        Toast.makeText(getActivity().getBaseContext(), item.getStoreFileName() + "开始下载!!", Toast.LENGTH_SHORT).show();
+                        DownloadFileItem(item, progressBar);
                     }
                 });
             }
         };
 
         listView.setAdapter(adapter);
-        adapter.addAll(getDownloadFileList());
+        adapter.clear();
+
+        adapter.addAll(OfflineList);
 
         return v;
     }
 
 
-    private List<OfflineItem> getDownloadFileList() {
-        List<OfflineItem> objList = new ArrayList<OfflineItem>();
+    private void FillList() {
 
         String pre = "http://192.168.1.27:9600/logs/";
         String[] files = new String[]{
-
 //                "AppLog.log",
 //                "AppLog.log.2015-04-24",
 //                "AppLog.log.2015-04-27",
-//                "AppLog.log.2015-04-28",
-//                "file.txt",
+                "001.docx",
+                "cde.flv",
+                "软件项目管理办法 第9部分 项目考核办法.txt",
 //                "伊利集团学分制培训方案2012.doc",
 //                "佳腾积分制培训系统用户手册.docx",
 //                "佳腾积分制培训系统用户手册.Pdf",
@@ -134,46 +127,54 @@ public class OfflineFragment extends BaseFragment {
 //                "软件项目管理办法 第2部分 Sprint计划会议流程和规范.Pdf",
 //                "软件项目管理办法 第3部分 每日站会流程和规范.docx",
 //                "软件项目管理办法 第3部分 每日站会流程和规范.Pdf",
-                "软件项目管理办法 第4部分 Sprint评审会议流程和规范.docx",
-                "软件项目管理办法 第4部分 Sprint评审会议流程和规范.Pdf",
-                "软件项目管理办法 第4部分 Sprint评审会议流程和规范【产品Backlog评估表】.docx",
-                "软件项目管理办法 第4部分 Sprint评审会议流程和规范【产品Backlog评估表】.Pdf",
-                "软件项目管理办法 第4部分 Sprint评审会议流程和规范【测试工作评估表】.docx",
-                "软件项目管理办法 第4部分 Sprint评审会议流程和规范【测试工作评估表】.Pdf",
-                "软件项目管理办法 第9部分 项目考核办法.docx",
-                "软件项目管理办法 第9部分 项目考核办法.Pdf"};
+//                "软件项目管理办法 第4部分 Sprint评审会议流程和规范.docx",
+//                "软件项目管理办法 第4部分 Sprint评审会议流程和规范.Pdf",
+//                "软件项目管理办法 第4部分 Sprint评审会议流程和规范【产品Backlog评估表】.docx",
+//                "软件项目管理办法 第4部分 Sprint评审会议流程和规范【产品Backlog评估表】.Pdf",
+//                "软件项目管理办法 第4部分 Sprint评审会议流程和规范【测试工作评估表】.docx",
+//                "软件项目管理办法 第4部分 Sprint评审会议流程和规范【测试工作评估表】.Pdf",
+//                "软件项目管理办法 第9部分 项目考核办法.docx",
+//                "软件项目管理办法 第9部分 项目考核办法.Pdf"
+        };
 
         for (int i = 0; i < files.length; i++) {
             OfflineItem offlineItem = new OfflineItem();
+            offlineItem.setId(i);
             offlineItem.setUrl(pre + files[i]);
             offlineItem.setDownloadRate(10);
             offlineItem.setStoreFileName(files[i]);
-            objList.add(offlineItem);
+            OfflineList.add(offlineItem);
         }
-
-        return objList;
     }
 
+    private void DownloadFileItem(final OfflineItem offlineItem, final ProgressBar progressBar) {
+        Uri downloadUri = Uri.parse(offlineItem.getUrl());
 
-    private void DownloadFileItem(OfflineItem offlineItem, final ProgressBar progressBar) {
-
-        Uri downloadUri = Uri.parse("http://121.41.56.61:9600/JetBook/29106c60-93dc-4535-bd27-dc05db62c9b7/0.png");
-
-        //Uri downloadUri = Uri.parse("http://tcrn.ch/Yu1Ooo1");
-        String dir = this.getActivity().getBaseContext().getExternalCacheDir().toString() + "/0.png";
-        System.err.println(dir);
-
-        Uri destinationUri = Uri.parse(dir);
-
+        final String storeFileName = this.getActivity().getBaseContext().getExternalCacheDir().toString() + "/" + offlineItem.getStoreFileName();
+        final Uri destinationUri = Uri.parse(storeFileName);
 
         DownloadRequest downloadRequest = new DownloadRequest(downloadUri)
-                .addCustomHeader("Auth-Token", "YourTokenApiKey")
+                .addCustomHeader("Accept-Charset", "UTF-8")
                 .setRetryPolicy(new DefaultRetryPolicy())
                 .setDestinationURI(destinationUri).setPriority(DownloadRequest.Priority.HIGH)
                 .setDownloadListener(new DownloadStatusListener() {
                     @Override
                     public void onDownloadComplete(int id) {
                         Toast.makeText(getActivity().getApplication(), "download complete", Toast.LENGTH_SHORT).show();
+
+                        //如果下载的flv文件，直接播放
+                        if (storeFileName.endsWith(".flv")) {
+                            Intent toFullscreen = new Intent(getActivity(), FullscreenVlcPlayer.class);
+                            Bundle b = new Bundle();
+
+                            //String url1 = "http://192.168.1.27:9600/logs/" + "bcd.flv"; //远程视频
+                            //String url2 = getActivity().getBaseContext().getExternalCacheDir().toString() + "/" + "cde.flv"; //本地视频
+
+                            // Pass the url from the input to the player
+                            b.putString("url", String.valueOf(destinationUri));
+                            toFullscreen.putExtras(b); //Put your id to your next Intent
+                            startActivity(toFullscreen);
+                        }
                     }
 
                     @Override
@@ -183,27 +184,10 @@ public class OfflineFragment extends BaseFragment {
 
                     @Override
                     public void onProgress(int id, long totalBytes, long downlaodedBytes, int progress) {
-                        System.out.println(progress);
                         progressBar.setProgress(progress);
-
                     }
                 });
-
         this.downloadManager.add(downloadRequest);
     }
-
-//    private String getExternalCacheDir(){
-//        // 获取SD卡目录
-//        String dowloadDir = Environment.getExternalStorageDirectory()
-//                + "/ideasdownload/";
-//        File file = new File(dowloadDir);
-//        //创建下载目录
-//        if (!file.exists()) {
-//            file.mkdirs();
-//        }
-//
-//        return file;
-//
-//    }
 
 }
