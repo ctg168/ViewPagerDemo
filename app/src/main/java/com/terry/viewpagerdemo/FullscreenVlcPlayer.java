@@ -139,8 +139,8 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 Log.v("NEW POS", "pos is : " + i);
-                //if (i != 0)
-                //    libvlc.setPosition(((float) i / 100.0f));
+                if (i != 0)
+                    libvlc.setPosition(((float) i / 100.0f));
             }
 
             @Override
@@ -313,8 +313,10 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
             libvlc.setChroma("RV32");
             libvlc.setVerboseMode(true);
 
-            //自动从某个位置开始放，不好使...
+            //宸茬粡瀹炵幇浜嗚繘搴︽潯鎷栧姩锛岃繖閲屼笉闇�瑕佷簡锛屼絾鏄紝position鏄寜鐓х櫨鍒嗘瘮鏉ョ殑
             //libvlc.setPosition(startTime);
+
+
 
 
             LibVLC.restart(this);
@@ -325,6 +327,9 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
             list.clear();
             list.add(new Media(libvlc, LibVLC.PathToURI(media)), false);
             libvlc.playIndex(0);
+
+            libvlc.setPosition(((float) startTime / 100.0f));
+
         } catch (Exception e) {
             Toast.makeText(this, "Could not create Vlc Player", Toast.LENGTH_LONG).show();
         }
