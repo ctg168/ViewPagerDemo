@@ -313,7 +313,9 @@ public class FullscreenVlcPlayer extends Activity implements SurfaceHolder.Callb
             libvlc.setChroma("RV32");
             libvlc.setVerboseMode(true);
 
+            //自动从某个位置开始放，不好使...
             //libvlc.setPosition(startTime);
+
 
             LibVLC.restart(this);
             EventHandler.getInstance().addHandler(mHandler);
