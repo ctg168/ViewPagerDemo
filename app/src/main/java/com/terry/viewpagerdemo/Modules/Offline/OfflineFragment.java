@@ -3,7 +3,6 @@ package com.terry.viewpagerdemo.Modules.Offline;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,26 +11,18 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.terry.viewpagerdemo.BaseActivity;
 import com.terry.viewpagerdemo.BaseFragment;
 import com.terry.viewpagerdemo.Framework.ThinDownloadManager.DefaultRetryPolicy;
-import com.terry.viewpagerdemo.Framework.ThinDownloadManager.DownloadManager;
 import com.terry.viewpagerdemo.Framework.ThinDownloadManager.DownloadRequest;
 import com.terry.viewpagerdemo.Framework.ThinDownloadManager.DownloadStatusListener;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.BaseAdapterHelper;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.QuickAdapter;
 import com.terry.viewpagerdemo.Framework.ThinDownloadManager.ThinDownloadManager;
-import com.terry.viewpagerdemo.FullscreenVlcPlayer;
+import com.terry.viewpagerdemo.Util.FullscreenVlcPlayer;
 import com.terry.viewpagerdemo.R;
 
-import org.videolan.libvlc.Media;
-
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 
 public class OfflineFragment extends BaseFragment {
@@ -149,13 +140,13 @@ public class OfflineFragment extends BaseFragment {
     }
 
     private void DownloadFileItem(final OfflineItem offlineItem, final ProgressBar progressBar) {
+
         Uri downloadUri = Uri.parse(offlineItem.getUrl());
 
         final String storeFileName = this.getActivity().getBaseContext().getExternalCacheDir().toString() + "/" + offlineItem.getStoreFileName();
         final Uri destinationUri = Uri.parse(storeFileName);
 
         DownloadRequest downloadRequest = new DownloadRequest(downloadUri)
-                .addCustomHeader("Accept-Charset", "UTF-8")
                 .setRetryPolicy(new DefaultRetryPolicy())
                 .setDestinationURI(destinationUri).setPriority(DownloadRequest.Priority.HIGH)
                 .setDownloadListener(new DownloadStatusListener() {

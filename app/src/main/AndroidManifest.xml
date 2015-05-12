@@ -3,8 +3,9 @@
     package="com.terry.viewpagerdemo" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:name=".BaseApplication"
@@ -27,13 +28,34 @@
             android:label="@string/title_activity_nof" >
         </activity>
         <activity
-            android:name=".CameraActivity"
+            android:name=".Util.TrafficStatActivity"
+            android:label="@string/title_activity_nof" >
+        </activity>
+        <activity
+            android:name=".Util.DownloadListActivity"
+            android:label="@string/title_activity_nof" >
+        </activity>
+        <activity
+            android:name=".Util.CameraActivity"
             android:label="@string/title_activity_camera" >
         </activity>
         <activity
-            android:name=".FullscreenVlcPlayer"
+            android:name=".Util.FullscreenVlcPlayer"
             android:label="@string/title_activity_fullscreen_vlc_player" >
         </activity>
+        <activity
+            android:name=".Util.FullscreenSVPlayer"
+            android:label="@string/title_activity_fullscreen_svplayer" >
+        </activity>
+
+        <service android:name=".Framework.DownloadManager.services.TrafficCounterService" >
+        </service>
+        <service android:name=".Framework.DownloadManager.services.DownloadService" >
+            <intent-filter >
+                <action android:name="com.terry.viewpagerdemo.Framework.DownloadManager.services.IDownloadService" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

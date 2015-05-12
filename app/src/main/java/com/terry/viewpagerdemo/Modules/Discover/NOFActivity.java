@@ -8,11 +8,10 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.terry.viewpagerdemo.Framework.QuickAdapter.BaseAdapterHelper;
 import com.terry.viewpagerdemo.Framework.QuickAdapter.QuickAdapter;
-import com.terry.viewpagerdemo.FullscreenVlcPlayer;
+import com.terry.viewpagerdemo.Util.FullscreenVlcPlayer;
 import com.terry.viewpagerdemo.R;
 
 import java.util.ArrayList;

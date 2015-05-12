@@ -1,4 +1,4 @@
-package com.terry.viewpagerdemo;
+package com.terry.viewpagerdemo.Util;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -1,5 +1,6 @@
 package com.terry.viewpagerdemo.Modules.MainPage;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.terry.viewpagerdemo.BaseFragment;
 import com.terry.viewpagerdemo.R;
+import com.terry.viewpagerdemo.Util.DownloadListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,6 +96,7 @@ public class MainPageFragment extends BaseFragment {
                 mainPageItem.setOld(!mainPageItem.isOld());
 
             } else if (itemTitle == getString(R.string.MainPageItemContextMenu_UnFocus)) {
+                startActivity(new Intent(this.getActivity(), DownloadListActivity.class));
 
             } else if (itemTitle == getString(R.string.MainPageItemContextMenu_Remove)) {
                 mainPageItemList.remove(menuInfo.position);

@@ -1,4 +1,4 @@
-package com.terry.viewpagerdemo;
+package com.terry.viewpagerdemo.Util;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.terry.viewpagerdemo.R;
 
 import org.videolan.libvlc.EventHandler;
 import org.videolan.libvlc.IVideoPlayer;
