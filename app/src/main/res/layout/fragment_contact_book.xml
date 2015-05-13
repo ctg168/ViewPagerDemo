@@ -2,7 +2,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.terry.viewpagerdemo.Modules.ContactBook.ContactBookFragment">
+             tools:context="com.jet2006.LearnApp.Modules.ContactBook.ContactBookFragment">
 
     <ListView
         android:id="@+id/lvContactList"

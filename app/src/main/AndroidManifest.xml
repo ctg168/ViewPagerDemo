@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.terry.viewpagerdemo" >
+    package="com.jet2006.LearnApp" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -9,13 +9,13 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
-        android:name=".BaseApplication"
+        android:name="com.jet2006.LearnApp.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.jet2006.LearnApp.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="locked" >
             <intent-filter>
@@ -25,35 +25,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Modules.Discover.NOFActivity"
+            android:name="com.jet2006.LearnApp.Modules.Discover.NOFActivity"
             android:label="@string/title_activity_nof" >
         </activity>
         <activity
-            android:name=".Util.TrafficStatActivity"
+            android:name="com.jet2006.LearnApp.Misc.TrafficStatActivity"
             android:label="@string/title_activity_nof" >
         </activity>
         <activity
-            android:name=".Util.DownloadListActivity"
+            android:name="com.jet2006.LearnApp.Misc.DownloadListActivity"
             android:label="@string/title_activity_nof" >
         </activity>
         <activity
-            android:name=".Util.CameraActivity"
+            android:name="com.jet2006.LearnApp.Misc.CameraActivity"
             android:label="@string/title_activity_camera" >
         </activity>
         <activity
-            android:name=".Util.FullscreenVlcPlayer"
+            android:name="com.jet2006.LearnApp.Misc.FullscreenVlcPlayer"
             android:label="@string/title_activity_fullscreen_vlc_player" >
         </activity>
         <activity
-            android:name=".Util.FullscreenSVPlayer"
+            android:name="com.jet2006.LearnApp.Misc.FullscreenSVPlayer"
             android:label="@string/title_activity_fullscreen_svplayer" >
         </activity>
 
-        <service android:name=".Framework.DownloadManager.services.TrafficCounterService" >
+        <service android:name="com.jet2006.Framework.DownloadManager.services.TrafficCounterService" >
         </service>
-        <service android:name=".Framework.DownloadManager.services.DownloadService" >
+        <service android:name="com.jet2006.Framework.DownloadManager.services.DownloadService" >
             <intent-filter >
-                <action android:name="com.terry.viewpagerdemo.Framework.DownloadManager.services.IDownloadService" />
+                <action android:name="com.terry.Framework.DownloadManager.services.IDownloadService" />
             </intent-filter>
         </service>
 
