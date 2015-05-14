@@ -7,6 +7,15 @@
     <ListView
         android:id="@+id/lvContactList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:text="数据加载中... 请稍后...."
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"/>
 
 </FrameLayout>
