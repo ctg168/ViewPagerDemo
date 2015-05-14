@@ -28,7 +28,7 @@ public class NetworkUtils {
 	}
 	
 	public static String getFileNameFromUrl(String url) {
-		// 通过 ‘？�?�?�?�?判断文件�?
+
 		int index = url.lastIndexOf('?');
 		String filename;
 		if (index > 1) {

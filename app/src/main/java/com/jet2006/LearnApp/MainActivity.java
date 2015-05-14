@@ -42,9 +42,9 @@ public class MainActivity extends BaseActivity {
 
 
                 //缩放效果
-//                final float normalizedposition = Math.abs(Math.abs(position) - 1);
-//                page.setScaleX(normalizedposition / 2 + 0.5f);
-//                page.setScaleY(normalizedposition / 2 + 0.5f);
+                final float normalizedposition = Math.abs(Math.abs(position) - 1);
+                page.setScaleX(normalizedposition / 2 + 0.5f);
+                page.setScaleY(normalizedposition / 2 + 0.5f);
 
 
                 //窗户效果

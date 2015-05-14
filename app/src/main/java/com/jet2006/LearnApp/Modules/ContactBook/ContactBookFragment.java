@@ -1,6 +1,5 @@
 package com.jet2006.LearnApp.Modules.ContactBook;
 
-import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
