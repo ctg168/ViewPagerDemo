@@ -16,7 +16,7 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/jet2006/Framework/DownloadManager/utils/NetworkUtils.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/jet2006/Framework/DownloadManager/utils/StorageUtils.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/jet2006/Framework/DownloadManager/utils/TextUtils.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/jet2006/Framework/DownloadManager/utils/Utils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/jet2006/Framework/DownloadManager/utils/Utils.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/jet2006/Framework/DownloadManager/widgets/DownloadListAdapter.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/jet2006/Framework/DownloadManager/widgets/ViewHolder.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/jet2006/LearnApp/Misc/DownloadListActivity.java" charset="UTF-8" />

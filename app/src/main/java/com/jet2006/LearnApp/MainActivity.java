@@ -2,6 +2,7 @@ package com.jet2006.LearnApp;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.jet2006.LearnApp.Modules.ContactBook.ContactBookFragment;
 import com.jet2006.LearnApp.Modules.Discover.DiscoverFragment;
@@ -14,10 +15,12 @@ import java.util.ArrayList;
 public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
+    @Override
+    protected void setupViews() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         ArrayList<BaseFragment> fragmentList = new ArrayList<BaseFragment>();
@@ -29,16 +32,26 @@ public class MainActivity extends BaseActivity {
         MainFragmentAdapter mainPageAdapter = new MainFragmentAdapter(getSupportFragmentManager(), fragmentList);
 
         viewPager.setAdapter(mainPageAdapter);
-    }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
-    }
+        viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
+            @Override
+            public void transformPage(View page, float position) {
+                //半透明效果
+//                final float normalizedposition = Math.abs(Math.abs(position) - 1);
+//                page.setAlpha(normalizedposition);
 
-    @Override
-    protected void setupViews() {
 
+                //缩放效果
+//                final float normalizedposition = Math.abs(Math.abs(position) - 1);
+//                page.setScaleX(normalizedposition / 2 + 0.5f);
+//                page.setScaleY(normalizedposition / 2 + 0.5f);
+
+
+                //窗户效果
+//                page.setRotationY(position * -30);
+
+            }
+        });
     }
 
     @Override
