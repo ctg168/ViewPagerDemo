@@ -26,6 +26,8 @@ public class ContactBookFragment extends BaseFragment {
     Handler handler = null;
     QuickAdapter<ContactBookItem> contactBookItemQuickAdapter;
 
+    View mRootView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
