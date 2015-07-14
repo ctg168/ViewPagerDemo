@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.jet2006.Framework.net.WebApiCaller;
 import com.jet2006.LearnApp.BaseFragment;
+import com.jet2006.LearnApp.LogUtil;
 import com.jet2006.LearnApp.R;
 
 import java.util.List;
@@ -17,22 +18,20 @@ public class LessonFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lesson, container, false);
 
+        // 基本对象返回
+        WebApiCaller<JetUser> caller1 = new WebApiCaller<JetUser>() {
+            @Override
+            public void OnResponse(JetUser obj) {
+                //tvCD.setText(String.valueOf(obj.Id));
+                //textView.setText(obj.ObjectName);
+                super.OnResponse(obj);
+                LogUtil.e("terry", obj.ObjectName);
+            }
+        };
 
-
-
+        Object[] params = new Object[]{5, "zxx"};
+        caller1.InvokeMethod(view.getContext(), "JetTest", "Test2", params, JetUser.class);
 
         return view;
     }
-
-    private List<Lesson> GetLessonList(){
-        WebApiCaller<Lesson> caller = new WebApiCaller<Lesson>();
-
-//
-//        Object[] params = { 1, 2 };
-//        caller.InvokeMethod(getActivity(),"WhTest", "Test1", params, JetUser.class);
-
-        return  null;
-    }
-
-
 }

@@ -26,8 +26,6 @@ public class ContactBookFragment extends BaseFragment {
     Handler handler = null;
     QuickAdapter<ContactBookItem> contactBookItemQuickAdapter;
 
-    View mRootView;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,6 +42,29 @@ public class ContactBookFragment extends BaseFragment {
 
 
     private void LoadData() {
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                if (msg.what == 0) {
+                    @SuppressWarnings("unchecked")
+                    ArrayList<ContactBookItem> contactBookItems = (ArrayList<ContactBookItem>) msg.obj;
+
+                    contactBookItemQuickAdapter = new QuickAdapter<ContactBookItem>(getActivity(), R.layout.layout_contactbook_item) {
+                        @Override
+                        protected void convert(BaseAdapterHelper helper, ContactBookItem item) {
+                            helper.setImageResource(R.id.imgContactBookAvatar, item.getImgId())
+                                    .setText(R.id.txtTitle, item.getObjectName())
+                                    .setText(R.id.txtDesc, item.getPhoneNumber());
+                        }
+                    };
+
+                    listView.setAdapter(contactBookItemQuickAdapter);
+                    contactBookItemQuickAdapter.addAll(dataList);
+                }
+            }
+        };
+
         //开一条子线程加载网络数据
         Runnable runnable = new Runnable() {
             public void run() {
@@ -59,33 +80,9 @@ public class ContactBookFragment extends BaseFragment {
 
             }
         };
-        handler = new LoadHanler();
+
         new Thread(runnable).start();
     }
-
-    class LoadHanler extends Handler {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 0) {
-                @SuppressWarnings("unchecked")
-                ArrayList<ContactBookItem> contactBookItems = (ArrayList<ContactBookItem>) msg.obj;
-
-                contactBookItemQuickAdapter = new QuickAdapter<ContactBookItem>(getActivity(), R.layout.layout_contactbook_item) {
-                    @Override
-                    protected void convert(BaseAdapterHelper helper, ContactBookItem item) {
-                        helper.setImageResource(R.id.imgContactBookAvatar, item.getImgId())
-                                .setText(R.id.txtTitle, item.getObjectName())
-                                .setText(R.id.txtDesc, item.getPhoneNumber());
-                    }
-                };
-
-                listView.setAdapter(contactBookItemQuickAdapter);
-                contactBookItemQuickAdapter.addAll(dataList);
-            }
-        }
-    }
-
 
     private void getAllContacts() {
         if (dataList.size() > 0) return;
@@ -94,6 +91,9 @@ public class ContactBookFragment extends BaseFragment {
         ContentResolver cr = this.getActivity().getContentResolver();
         // 取得电话本中开始一项的光标,主要就是查询"contacts"表
         Cursor cursor = cr.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+
+        int iCount = 30;
+
         while (cursor.moveToNext()) {
             // 取得联系人名字 (显示出来的名字)，实际内容在 ContactsContract.Contacts中
             int nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
@@ -114,6 +114,9 @@ public class ContactBookFragment extends BaseFragment {
                 dataList.add(contactBookItem);
             }
             phoneNumbers.close();
+
+            if(!(iCount-->0)) break;;
+
         }
         cursor.close();
     }
