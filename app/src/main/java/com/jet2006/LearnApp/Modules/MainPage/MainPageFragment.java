@@ -105,7 +105,7 @@ public class MainPageFragment extends BaseFragment {
             } else {
             }
 
-            //刷新数据列表
+            //刷新数据列表123
             if (this.mainPageAdapter != null) {
                 mainPageAdapter.notifyDataSetChanged();
             }
