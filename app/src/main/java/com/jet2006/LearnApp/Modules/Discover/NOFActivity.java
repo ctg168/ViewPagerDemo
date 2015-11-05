@@ -85,7 +85,7 @@ public class NOFActivity extends FragmentActivity {
             String url2 = this.getBaseContext().getExternalCacheDir().toString() + "/" + "cde.flv"; //本地视频
 
             // Pass the url from the input to the player
-            b.putString("url", url2);
+            b.putString("url", url1);
             b.putInt("startTime", 40);
             toFullscreen.putExtras(b); //Put your id to your next Intent
             startActivity(toFullscreen);

@@ -5,14 +5,13 @@
     android:orientation="horizontal">
 
 
-
     <!-- 左边图像-->
     <ImageView
         android:id="@+id/imgNOFAvatar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_mainpageitem_rt_essence"
-        />
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="2dp"
+        android:src="@drawable/ic_mainpageitem_rt_essence" />
 
     <!--右边内容-->
     <LinearLayout
@@ -21,44 +20,53 @@
         android:orientation="vertical">
 
 
-
         <!-- 名字 -->
         <TextView
             android:id="@+id/tvNOFName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="喜洋洋"
-            android:textSize="16dp"
             android:textColor="@color/button_blue_color"
-            />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/tvNOFDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="终于开花了"
-            />
+            android:text="终于开花了" />
 
         <!-- 暂时不搞里面的图片网格的例子，只搞一个图片 -->
         <ImageView
             android:id="@+id/imgNOFCenterImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="300dp"
             android:maxHeight="300dp"
+            android:maxWidth="300dp"
             android:scaleType="centerInside"
-            android:src="@drawable/mmexport1430886412106"
-            />
+            android:src="@drawable/mmexport1430886412106" />
 
-        <TextView
-            android:id="@+id/tvNOFtime"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="14:53"
-            android:textColor="@color/LightGrey" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvNOFtime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="14:53"
+                android:textColor="@color/LightGrey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@drawable/ic_comment_black_18dp"
+                 />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
-    <View style="@style/splitline_horizontal"/>
+    <View style="@style/splitline_horizontal" />
 
 </LinearLayout>
