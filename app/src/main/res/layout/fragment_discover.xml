@@ -7,8 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top"
         android:background="@color/form_backcolor"
+        android:gravity="top"
         android:orientation="vertical"
         android:paddingBottom="30.0dip">
 
@@ -21,14 +21,15 @@
             android:layout_marginTop="15.0dip"
             android:background="@drawable/main_leftmenu_cell_background"
             android:clickable="true">
+
             <View style="@style/splitline_horizontal" />
 
             <ImageView
                 android:id="@+id/leftIvHeadPhoto"
                 android:layout_width="40.0dip"
                 android:layout_height="40.0dip"
-                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
                 android:padding="2.0dip"
                 android:src="@drawable/ic_mainpageitem_shop" />
 
@@ -36,10 +37,10 @@
                 android:id="@+id/leftTvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/leftIvHeadPhoto"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="6.0dip"
                 android:layout_marginRight="15.0dip"
+                android:layout_toRightOf="@id/leftIvHeadPhoto"
                 android:text="朋友圈"
                 android:textColor="@color/DarkGray"
                 android:textSize="17.0sp" />
@@ -56,16 +57,16 @@
             android:layout_height="60dip"
             android:layout_marginTop="15.0dip"
             android:background="@drawable/main_leftmenu_cell_background"
-            android:clickable="true"
-            >
+            android:clickable="true">
+
             <View style="@style/splitline_horizontal" />
 
             <ImageView
                 android:id="@+id/leftIvSaoYiSao"
                 android:layout_width="40.0dip"
                 android:layout_height="40.0dip"
-                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
                 android:padding="2.0dip"
                 android:src="@drawable/ic_mainpageitem_rt_hot" />
 
@@ -73,10 +74,10 @@
                 android:id="@+id/leftTvSaoYiSao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/leftIvSaoYiSao"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="6.0dip"
                 android:layout_marginRight="15.0dip"
+                android:layout_toRightOf="@id/leftIvSaoYiSao"
                 android:text="扫一扫"
                 android:textColor="@color/DarkGray"
                 android:textSize="17.0sp" />
@@ -92,23 +93,90 @@
             android:layout_width="match_parent"
             android:layout_height="60dip"
             android:background="@drawable/main_leftmenu_cell_background"
-            android:clickable="true"
-            >
+            android:clickable="true">
 
             <ImageView
                 android:id="@+id/leftIvYaoYiYao"
                 android:layout_width="40.0dip"
                 android:layout_height="40.0dip"
-                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
                 android:padding="2.0dip"
-                android:src="@drawable/ic_mainpageitem_rt_fail"/>
+                android:src="@drawable/ic_mainpageitem_rt_fail" />
 
             <TextView
                 android:id="@+id/leftTvYaoYiYao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6.0dip"
+                android:layout_marginRight="15.0dip"
                 android:layout_toRightOf="@id/leftIvYaoYiYao"
+                android:text="摇一摇"
+                android:textColor="@color/DarkGray"
+                android:textSize="17.0sp" />
+
+            <View
+                style="@style/splitline_horizontal"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
+
+        <!-- 零散 -->
+        <RelativeLayout
+            android:id="@+id/leftBtnSetting"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/main_leftmenu_cell_background"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/leftIcon"
+                android:layout_width="24.0dip"
+                android:layout_height="24.0dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:padding="2.0dip"
+                android:src="@drawable/ic_mainpageitem_rt_fail" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_toRightOf="@id/leftIcon"
+                android:text="摇一摇"
+                android:textColor="@color/DarkGray"
+                android:textSize="17.0sp" />
+
+            <View
+                style="@style/splitline_horizontal"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
+        <!-- 零散 -->
+        <RelativeLayout
+            android:id="@+id/leftBtnSetting2"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:background="@drawable/main_leftmenu_cell_background"
+            android:clickable="true">
+
+            <!--<ImageView-->
+            <!--android:id="@+id/leftIcon2"-->
+            <!--android:layout_width="24.0dip"-->
+            <!--android:layout_height="24.0dip"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:padding="2.0dip"-->
+            <!--android:src="@drawable/ic_mainpageitem_rt_fail"/>-->
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="6.0dip"
                 android:layout_marginRight="15.0dip"
@@ -120,7 +188,6 @@
                 style="@style/splitline_horizontal"
                 android:layout_alignParentBottom="true" />
         </RelativeLayout>
-
 
     </LinearLayout>
 
